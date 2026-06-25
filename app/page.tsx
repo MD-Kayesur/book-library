@@ -1,6 +1,5 @@
 "use client";
 import * as React from "react";
-import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { DUMMY_BOOKS } from "@/lib/dummy-data";
@@ -26,17 +25,10 @@ export default function Home() {
           <CarouselContent>
             {DUMMY_BOOKS.map((book) => (
               <CarouselItem key={book.id}>
-                 <div className="relative w-full h-[70vh] min-h-[600px] flex items-center justify-center">
-                   {/* Background Image with Overlay */}
-                   <Image 
-                     src={book.cover} 
-                     alt={book.title} 
-                     fill 
-                     priority
-                     sizes="100vw"
-                     className="object-cover" 
-                   />
-                   <div className="absolute inset-0 bg-zinc-950/70 z-10" />
+                  <div className="relative w-full h-[70vh] min-h-[600px] flex items-center justify-center bg-gradient-to-br from-zinc-900 via-zinc-950 to-neutral-900 overflow-hidden">
+                    {/* Premium Ambient Glow Effect */}
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-indigo-600/10 blur-[120px] pointer-events-none z-10" />
+                    <div className="absolute top-1/3 left-1/4 w-[300px] h-[300px] rounded-full bg-purple-600/5 blur-[80px] pointer-events-none z-10" />
                    
                    {/* Content */}
                    <motion.div 
