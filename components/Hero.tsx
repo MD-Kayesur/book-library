@@ -1,0 +1,153 @@
+"use client";
+
+import * as React from "react";
+import { Button } from "@/components/ui/button";
+import { DUMMY_BOOKS } from "@/lib/dummy-data";
+import { motion, AnimatePresence } from "framer-motion";
+
+export function Hero() {
+  const videoRef = React.useRef<HTMLVideoElement>(null);
+  const containerRef = React.useRef<HTMLDivElement>(null);
+  const [activeBookIndex, setActiveBookIndex] = React.useState(0);
+
+  React.useEffect(() => {
+    const video = videoRef.current;
+    const container = containerRef.current;
+    if (!video || !container) return;
+
+    let targetTime = 0;
+    let animationFrameId: number;
+
+    const handleScroll = () => {
+      const rect = container.getBoundingClientRect();
+      const scrollHeight = rect.height - window.innerHeight;
+      if (scrollHeight <= 0) return;
+
+      // Calculate scroll progress (0 to 1) inside container
+      const progress = Math.max(0, Math.min(1, -rect.top / scrollHeight));
+
+      // Calculate active book index based on progress
+      const totalBooks = DUMMY_BOOKS.length;
+      const index = Math.min(
+        totalBooks - 1,
+        Math.floor(progress * totalBooks),
+      );
+      setActiveBookIndex(index);
+
+      if (video.duration) {
+        targetTime = progress * video.duration;
+      }
+    };
+
+    const updateVideoTime = () => {
+      if (video && video.duration && !video.seeking) {
+        // Smoothly interpolate the current time towards target time
+        const diff = targetTime - video.currentTime;
+        if (Math.abs(diff) > 0.01) {
+          video.currentTime += diff * 0.25;
+        }
+      }
+      animationFrameId = requestAnimationFrame(updateVideoTime);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    animationFrameId = requestAnimationFrame(updateVideoTime);
+
+    // Initial check when metadata loads
+    const onLoadedMetadata = () => {
+      handleScroll();
+    };
+    video.addEventListener("loadedmetadata", onLoadedMetadata);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      cancelAnimationFrame(animationFrameId);
+      video.removeEventListener("loadedmetadata", onLoadedMetadata);
+    };
+  }, []);
+
+  const book = DUMMY_BOOKS[activeBookIndex];
+
+  return (
+    <div ref={containerRef} className="relative w-full h-[400vh] bg-zinc-950">
+      {/* Sticky Frame */}
+      <div className="sticky top-0 w-full h-screen flex items-center justify-center overflow-hidden">
+        {/* Background Video */}
+        <video
+          ref={videoRef}
+          src="/Create_a_highly_realistic_cine (1).mp4"
+          muted
+          playsInline
+          preload="auto"
+          className="absolute inset-0 w-full h-full object-cover z-0 pointer-events-none"
+        />
+
+        {/* Ambient Overlays */}
+        <div className="absolute inset-0 bg-zinc-950/65 z-10 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-zinc-950/40 z-10 pointer-events-none" />
+
+        {/* Content Wrapper */}
+        <div className="relative z-20 w-full max-w-5xl mx-auto px-6 md:px-12 text-center h-[70vh] flex items-center justify-center">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeBookIndex}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -30 }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+              className="flex flex-col items-center space-y-6"
+            >
+              <span className="px-4 py-1.5 rounded-full bg-indigo-500/20 text-indigo-300 text-sm font-semibold border border-indigo-500/30 backdrop-blur-md">
+                Featured Book {activeBookIndex + 1} of {DUMMY_BOOKS.length}
+              </span>
+              <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-white drop-shadow-md">
+                {book.title}
+              </h1>
+              <p className="text-xl md:text-3xl font-light text-zinc-300">
+                by {book.author}
+              </p>
+              <p className="text-lg md:text-xl text-zinc-200 max-w-3xl line-clamp-3 mt-4 leading-relaxed">
+                {book.description}
+              </p>
+              <div className="flex gap-4 pt-8">
+                <Button
+                  size="lg"
+                  className="bg-indigo-600 text-white hover:bg-indigo-700 h-12 px-8 text-base shadow-lg shadow-indigo-600/25"
+                >
+                  Borrow Now
+                </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="text-white border-white/20 hover:bg-white/10 h-12 px-8 text-base backdrop-blur-sm"
+                >
+                  Read Summary
+                </Button>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
+        {/* Scroll Indicator */}
+        {/* <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 pointer-events-none">
+          <span className="text-xs font-semibold uppercase tracking-wider text-zinc-400">
+            Scroll to scrub video & explore
+          </span>
+          <div className="w-[24px] h-[40px] rounded-full border-2 border-zinc-500 flex justify-center p-1.5">
+            <motion.div
+              animate={{
+                y: [0, 12, 0],
+              }}
+              transition={{
+                duration: 1.5,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+              className="w-1.5 h-1.5 rounded-full bg-indigo-400"
+            />
+          </div>
+        </div> */}
+      </div>
+    </div>
+  );
+}
