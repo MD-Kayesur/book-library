@@ -1,0 +1,139 @@
+import type { Book } from "@/lib/types/booksdata.type";
+
+export const DUMMY_BOOKS: Book[] = [
+  {
+    id: 1,
+    title: "The Great Gatsby",
+    author: "F. Scott Fitzgerald",
+    genre: "Classic Literature",
+    rating: 4.7,
+    total_copies: 8,
+    available_copies: 5,
+    description:
+      "A story of the wealthy Jay Gatsby and his love for the beautiful Daisy Buchanan.",
+    color: "#1e3a8a",
+    cover: "/images/covers/gatsby.png",
+    video: "/Create_a_highly_realistic_cine (1).mp4",
+    summary:
+      "The Great Gatsby is a 1925 novel by American writer F. Scott Fitzgerald. Set in the Jazz Age on Long Island, near New York City, the novel depicts first-person narrator Nick Carraway's interactions with mysterious millionaire Jay Gatsby and Gatsby's obsession to reunite with his former love, Daisy Buchanan.",
+    isLoanedBook: false,
+  },
+  {
+    id: 2,
+    title: "To Kill a Mockingbird",
+    author: "Harper Lee",
+    genre: "Fiction / Drama",
+    rating: 4.9,
+    total_copies: 12,
+    available_copies: 9,
+    description:
+      "The story of a young girl's coming-of-age in a sleepy Southern town.",
+    color: "#d97706",
+    cover: "/images/covers/mockingbird.png",
+    video: "/Create_a_highly_realistic_cine (1).mp4",
+    summary:
+      "To Kill a Mockingbird is a novel by Harper Lee published in 1960. Instantly successful, it won the Pulitzer Prize and has become a classic of modern American literature. The plot and characters are loosely based on Lee's observations of her family, her neighbors and an event that occurred near her hometown of Monroeville, Alabama, in 1936, when she was 10.",
+    isLoanedBook: true,
+  },
+  {
+    id: 3,
+    title: "1984",
+    author: "George Orwell",
+    genre: "Dystopian Fiction",
+    rating: 4.8,
+    total_copies: 6,
+    available_copies: 2,
+    description:
+      "A dystopian social science fiction novel and cautionary tale.",
+    color: "#dc2626",
+    cover: "/images/covers/1984.png",
+    video: "/Create_a_highly_realistic_cine (1).mp4",
+    summary:
+      "Nineteen Eighty-Four is a dystopian social science fiction novel and cautionary tale written by the English writer George Orwell. It was published in 1949 as Orwell's ninth and final book completed in his lifetime. Thematically, it centres on the consequences of totalitarianism, mass surveillance, and repressive regimentation of persons and behaviours within society.",
+    isLoanedBook: false,
+  },
+  {
+    id: 4,
+    title: "Pride and Prejudice",
+    author: "Jane Austen",
+    genre: "Romance / Classic",
+    rating: 4.6,
+    total_copies: 10,
+    available_copies: 8,
+    description:
+      "An honest but poor young woman and a wealthy but proud man fall in love.",
+    color: "#059669",
+    cover: "/images/covers/pride.png",
+    video: "/Create_a_highly_realistic_cine (1).mp4",
+    summary:
+      "Pride and Prejudice is an 1813 romantic novel of manners written by Jane Austen. The novel follows the character development of Elizabeth Bennet, the dynamic protagonist of the book who learns about the repercussions of hasty judgments and comes to appreciate the difference between superficial goodness and actual goodness.",
+    isLoanedBook: false,
+  },
+  {
+    id: 5,
+    title: "The Catcher in the Rye",
+    author: "J.D. Salinger",
+    genre: "Modern Fiction",
+    rating: 4.2,
+    total_copies: 5,
+    available_copies: 0,
+    description: "The struggles of teenage angst and alienation.",
+    color: "#b91c1c",
+    cover: "/images/covers/catcher.png",
+    video: "/Create_a_highly_realistic_cine (1).mp4",
+    summary:
+      "The Catcher in the Rye is a novel by J. D. Salinger, partially published in serial form in 1945–1946 and as a novel in 1951. It was originally intended for adults but is often read by adolescents for its themes of angst, alienation, and as a critique on superficiality in society.",
+    isLoanedBook: false,
+  },
+  {
+    id: 6,
+    title: "The Hobbit",
+    author: "J.R.R. Tolkien",
+    genre: "Fantasy / Adventure",
+    rating: 4.9,
+    total_copies: 15,
+    available_copies: 14,
+    description:
+      "A fantasy novel and children's book about the adventures of Bilbo Baggins.",
+    color: "#4f46e5",
+    cover: "/images/covers/hobbit.png",
+    video: "/Create_a_highly_realistic_cine (1).mp4",
+    summary:
+      "The Hobbit, or There and Back Again is a children's fantasy novel by English author J. R. R. Tolkien. It was published in 1937 to wide critical acclaim, being nominated for the Carnegie Medal and awarded a prize from the New York Herald Tribune for best juvenile fiction. The novel remains a classic in children's literature.",
+    isLoanedBook: false,
+  },
+  {
+    id: 7,
+    title: "Fahrenheit 451",
+    author: "Ray Bradbury",
+    genre: "Sci-Fi / Dystopian",
+    rating: 4.5,
+    total_copies: 4,
+    available_copies: 1,
+    description:
+      "A dystopian novel presenting a future American society where books are outlawed.",
+    color: "#ea580c",
+    cover: "/images/covers/fahrenheit.png",
+    video: "/Create_a_highly_realistic_cine (1).mp4",
+    summary:
+      "Fahrenheit 451 is a dystopian novel by American writer Ray Bradbury, first published in 1953. Often regarded as one of his best works, the novel presents a future American society where books are outlawed and firemen burn any that are found.",
+    isLoanedBook: false,
+  },
+  {
+    id: 8,
+    title: "Moby-Dick",
+    author: "Herman Melville",
+    genre: "Adventure Fiction",
+    rating: 4.3,
+    total_copies: 7,
+    available_copies: 3,
+    description:
+      "The epic tale of a captain's obsessive quest for a white whale.",
+    color: "#0891b2",
+    cover: "/images/covers/mobydick.png",
+    video: "/Create_a_highly_realistic_cine (1).mp4",
+    summary:
+      "Moby-Dick; or, The Whale is an 1851 novel by American writer Herman Melville. The book is the sailor Ishmael's narrative of the obsessive quest of Ahab, captain of the whaling ship Pequod, for revenge against Moby Dick, the giant white sperm whale that on the ship's previous voyage bit off Ahab's leg at the knee.",
+    isLoanedBook: false,
+  },
+];

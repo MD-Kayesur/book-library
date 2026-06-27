@@ -1,7 +1,8 @@
 "use client";
 
 import * as React from "react";
-import { DUMMY_BOOKS, type Book } from "@/lib/dummy-data";
+import { DUMMY_BOOKS } from "@/lib/data/books.data";
+import type { Book } from "@/lib/types/booksdata.type";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import {
