@@ -80,37 +80,43 @@ export default function BooksPage() {
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.3, delay: index * 0.05 }}
               >
-                <Card className="h-full flex flex-col justify-between bg-white dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800/80 hover:border-indigo-500/50 dark:hover:border-indigo-400/50 hover:shadow-md hover:-translate-y-1 transition-all duration-300 rounded-2xl overflow-hidden group">
-                  <CardHeader className="space-y-3 pb-4">
-                    <div className="h-10 w-10 rounded-xl bg-indigo-50 dark:bg-indigo-950/50 flex items-center justify-center text-indigo-600 dark:text-indigo-400 group-hover:scale-110 transition-transform duration-300">
-                      <BookOpen className="h-5 w-5" />
-                    </div>
-                    <div className="space-y-1">
-                      <CardTitle className="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 leading-tight">
-                        {book.title}
-                      </CardTitle>
-                      <CardDescription className="flex items-center gap-1.5 text-zinc-500 dark:text-zinc-400 font-medium text-sm">
-                        <User className="h-3.5 w-3.5" />
-                        <span>{book.author}</span>
-                      </CardDescription>
-                    </div>
-                  </CardHeader>
-                  <CardContent className="pb-6">
-                    <p className="text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed line-clamp-4">
-                      {book.description}
-                    </p>
-                  </CardContent>
-                  <CardFooter className="pt-4 pb-6 flex gap-3 border-t border-zinc-100 dark:border-zinc-800/50 mt-auto px-6">
-                    <Button className="flex-1 bg-zinc-900 dark:bg-zinc-50 text-white dark:text-zinc-950 hover:bg-zinc-800 dark:hover:bg-zinc-200 rounded-xl py-5 font-semibold text-sm">
-                      Borrow Now
-                    </Button>
-                    <Button
-                      variant="outline"
-                      className="flex-1 border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-900 rounded-xl py-5 font-semibold text-sm"
-                    >
-                      Summary
-                    </Button>
-                  </CardFooter>
+                <Card className="h-full flex flex-col bg-white dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800/80 hover:border-indigo-500/50 dark:hover:border-indigo-400/50 hover:shadow-md hover:-translate-y-1 transition-all duration-300 rounded-2xl overflow-hidden group">
+                  <div className="relative aspect-[4/3] w-full overflow-hidden bg-zinc-100 dark:bg-zinc-950 border-b border-zinc-100 dark:border-zinc-800/50">
+                    <img
+                      src={book.cover}
+                      alt={book.title}
+                      className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                  <div className="flex-1 flex flex-col justify-between">
+                    <CardHeader className="space-y-2 pb-4 pt-5">
+                      <div className="space-y-1">
+                        <CardTitle className="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 leading-tight">
+                          {book.title}
+                        </CardTitle>
+                        <CardDescription className="flex items-center gap-1.5 text-zinc-500 dark:text-zinc-400 font-medium text-sm">
+                          <User className="h-3.5 w-3.5" />
+                          <span>{book.author}</span>
+                        </CardDescription>
+                      </div>
+                    </CardHeader>
+                    <CardContent className="pb-6">
+                      <p className="text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed line-clamp-3">
+                        {book.description}
+                      </p>
+                    </CardContent>
+                    <CardFooter className="pt-4 pb-6 flex gap-3 border-t border-zinc-100 dark:border-zinc-800/50 mt-auto px-6">
+                      <Button className="flex-1 bg-zinc-900 dark:bg-zinc-50 text-white dark:text-zinc-950 hover:bg-zinc-800 dark:hover:bg-zinc-200 rounded-xl py-5 font-semibold text-sm">
+                        Borrow Now
+                      </Button>
+                      <Button
+                        variant="outline"
+                        className="flex-1 border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-900 rounded-xl py-5 font-semibold text-sm"
+                      >
+                        Summary
+                      </Button>
+                    </CardFooter>
+                  </div>
                 </Card>
               </motion.div>
             ))}
